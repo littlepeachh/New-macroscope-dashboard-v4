@@ -1,0 +1,240 @@
+from __future__ import annotations
+
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+from jinja2 import Template
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from src.utils import DATA_DIR, PUBLIC_DIR, dataframe_to_records, ensure_dirs, load_settings, read_csv_safe  # noqa: E402
+
+
+def valuation_summary(df: pd.DataFrame) -> list[dict]:
+    output: list[dict] = []
+    if df.empty:
+        return output
+    for code, group in df.groupby("index_code"):
+        group = group.sort_values("trade_date")
+        latest = group.tail(1).iloc[0]
+        pe = pd.to_numeric(group["pe_ttm"], errors="coerce").dropna()
+        pb = pd.to_numeric(group["pb"], errors="coerce").dropna() if "pb" in group else pd.Series(dtype=float)
+        current_pe = float(latest["pe_ttm"]) if pd.notna(latest.get("pe_ttm")) else None
+        current_pb = float(latest["pb"]) if pd.notna(latest.get("pb")) else None
+        pe_pct = float((pe <= current_pe).mean() * 100) if current_pe is not None and not pe.empty else None
+        pb_pct = float((pb <= current_pb).mean() * 100) if current_pb is not None and not pb.empty else None
+        output.append({
+            "index_code": code,
+            "index_name": latest["index_name"],
+            "trade_date": str(latest["trade_date"]),
+            "current_pe": current_pe,
+            "pe_mean": float(pe.mean()) if not pe.empty else None,
+            "pe_median": float(pe.median()) if not pe.empty else None,
+            "pe_q25": float(pe.quantile(0.25)) if not pe.empty else None,
+            "pe_q75": float(pe.quantile(0.75)) if not pe.empty else None,
+            "pe_percentile": pe_pct,
+            "current_pb": current_pb,
+            "pb_mean": float(pb.mean()) if not pb.empty else None,
+            "pb_median": float(pb.median()) if not pb.empty else None,
+            "pb_percentile": pb_pct,
+            "source": latest.get("source", ""),
+            "sample_start": str(group["trade_date"].min()),
+            "sample_end": str(group["trade_date"].max()),
+            "sample_count": int(len(group)),
+        })
+    return output
+
+
+def latest_market_cards(df: pd.DataFrame) -> list[dict]:
+    cards: list[dict] = []
+    if df.empty:
+        return cards
+    for symbol, group in df.groupby("symbol"):
+        group = group.sort_values("trade_date")
+        latest = group.iloc[-1]
+        one_year = group.tail(252)
+        ytd = group[group["trade_date"].astype(str).str[:4] == str(latest["trade_date"])[:4]]
+        one_year_return = (latest["close"] / one_year.iloc[0]["close"] - 1) * 100 if len(one_year) > 1 else None
+        ytd_return = (latest["close"] / ytd.iloc[0]["close"] - 1) * 100 if len(ytd) > 1 else None
+        cards.append({
+            "symbol": symbol,
+            "name": latest["name"],
+            "market": latest["market"],
+            "trade_date": str(latest["trade_date"]),
+            "close": float(latest["close"]) if pd.notna(latest["close"]) else None,
+            "daily_pct": float(latest["pct_change"]) if pd.notna(latest.get("pct_change")) else None,
+            "ytd_pct": float(ytd_return) if ytd_return is not None else None,
+            "one_year_pct": float(one_year_return) if one_year_return is not None else None,
+            "source": latest.get("source", ""),
+        })
+    return sorted(cards, key=lambda x: (x["market"], x["symbol"]))
+
+
+def read_status() -> dict:
+    path = DATA_DIR / "status.json"
+    if not path.exists():
+        return {"overall_status": "empty", "updated_at": None, "datasets": {}}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {"overall_status": "invalid", "updated_at": None, "datasets": {}}
+
+
+HTML = r'''<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MacroScope Public 宏观市场看板" />
+  <title>{{ title }}</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    :root{--bg:#f4f7fb;--card:#fff;--text:#172033;--muted:#6f7d96;--line:#e7edf6;--navy:#0c1a36;--blue:#2f6fed;--cyan:#18a5a8;--amber:#ca8711;--red:#cb4754;--green:#1d9a6c;--shadow:0 12px 35px rgba(21,45,86,.08)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:linear-gradient(180deg,#eef3fb 0,#f8fafc 340px);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif}
+    .shell{max-width:1500px;margin:0 auto;padding:28px 28px 56px}.hero{position:relative;overflow:hidden;border-radius:30px;padding:48px 54px;color:#fff;background:linear-gradient(120deg,#0b1730,#173c73 58%,#2f6fd0);box-shadow:0 25px 60px rgba(16,53,111,.22)}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.18)}.hero:before{width:380px;height:380px;right:-90px;top:-190px;box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 135px rgba(255,255,255,.025)}.hero:after{width:190px;height:190px;right:140px;bottom:-145px}
+    .eyebrow{letter-spacing:.24em;text-transform:uppercase;font-size:12px;font-weight:700;color:#c4d4ef}.hero h1{font-size:42px;line-height:1.15;margin:18px 0 12px}.hero p{font-size:18px;color:#dbe6f7;margin:0;max-width:850px}.badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}.badge{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.1);padding:9px 14px;border-radius:999px;font-size:13px;font-weight:650}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:22px 0 6px}.tabs{display:flex;gap:9px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:rgba(255,255,255,.82);padding:11px 17px;border-radius:13px;color:#53617b;font-weight:700;cursor:pointer;transition:.2s}.tab:hover{transform:translateY(-1px);box-shadow:var(--shadow)}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+    .status-pill{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:13px}.dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(29,154,108,.12)}
+    .panel{display:none;padding-top:16px}.panel.active{display:block}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin:18px 0 15px}.section-head h2{font-size:30px;margin:0}.section-head p{color:var(--muted);margin:5px 0 0}.kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:13px;margin-bottom:16px}.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px 18px;box-shadow:var(--shadow);min-height:118px}.kpi-label{color:var(--muted);font-size:13px;font-weight:650}.kpi-value{font-size:27px;font-weight:800;margin:11px 0 4px;letter-spacing:-.03em}.kpi-note{font-size:12px;color:#97a2b6}.positive{color:var(--green)}.negative{color:var(--red)}
+    .grid2{display:grid;grid-template-columns:1.35fr 1fr;gap:15px}.grid-even{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}.card-title{font-weight:800;font-size:16px;margin:0 0 5px}.card-subtitle{color:var(--muted);font-size:12px;margin-bottom:10px}.chart{height:390px}.chart.small{height:320px}
+    .asset-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:15px}.asset{background:#fff;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:var(--shadow)}.asset-top{display:flex;justify-content:space-between;gap:10px}.asset-symbol{font-size:12px;color:var(--muted)}.asset-name{font-weight:800}.asset-price{font-size:25px;font-weight:820;margin:12px 0}.asset-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;font-size:12px}.asset-metrics div{background:#f6f8fc;border-radius:10px;padding:8px}.asset-metrics span{display:block;color:var(--muted);font-size:10px;margin-bottom:3px}
+    .valuation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.valuation-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px;box-shadow:var(--shadow);cursor:pointer}.valuation-card.selected{outline:2px solid var(--blue)}.valuation-title{display:flex;justify-content:space-between;align-items:center}.valuation-title strong{font-size:16px}.multiple{font-size:28px;font-weight:850;margin:13px 0 8px}.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.stat{background:#f6f8fc;border-radius:10px;padding:7px;font-size:11px;color:var(--muted)}.stat b{display:block;color:var(--text);font-size:13px;margin-top:2px}.bar{height:7px;background:#edf1f7;border-radius:99px;overflow:hidden;margin-top:13px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--amber));border-radius:99px}
+    .data-table{width:100%;border-collapse:collapse;font-size:13px}.data-table th,.data-table td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}.data-table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.source-list{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.source-card{border:1px solid var(--line);border-radius:16px;padding:15px;background:white}.source-status{font-weight:800}.source-status.success,.source-status.demo{color:var(--green)}.source-status.partial{color:var(--amber)}.source-status.failed{color:var(--red)}
+    .empty{padding:35px;border-radius:18px;background:#fff8e8;border:1px solid #f4dfaf;color:#91640b}.foot{color:#8996aa;text-align:center;font-size:12px;margin-top:34px;line-height:1.8}.hint{font-size:12px;color:var(--muted);background:#f7f9fc;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-top:10px}
+    @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.asset-grid,.valuation-grid{grid-template-columns:repeat(2,1fr)}.grid2,.grid-even{grid-template-columns:1fr}.source-list{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:680px){.shell{padding:14px 14px 40px}.hero{padding:34px 25px;border-radius:22px}.hero h1{font-size:31px}.hero p{font-size:15px}.topbar{align-items:flex-start;flex-direction:column}.kpis{grid-template-columns:repeat(2,1fr)}.asset-grid,.valuation-grid,.source-list{grid-template-columns:1fr}.section-head h2{font-size:25px}.chart{height:330px}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <div class="eyebrow">PUBLIC WEB · NO DATA TOKEN · AUTO UPDATE</div>
+    <h1>MacroScope Public 宏观市场看板</h1>
+    <p>将宏观流动性、社会融资、PMI、CPI、中美科技龙头、历史估值与交易拥挤度整合到一个公开网页。</p>
+    <div class="badges"><span class="badge">所有访客直接打开</span><span class="badge">GitHub Pages 托管</span><span class="badge">GitHub Actions 自动更新</span><span class="badge">公开数据源失败时保留缓存</span></div>
+  </header>
+
+  <div class="topbar">
+    <nav class="tabs">
+      <button class="tab active" data-tab="macro">宏观经济</button>
+      <button class="tab" data-tab="leaders">中美科技龙头</button>
+      <button class="tab" data-tab="valuation">估值与拥挤度</button>
+      <button class="tab" data-tab="health">数据状态</button>
+    </nav>
+    <div class="status-pill"><span class="dot"></span><span id="lastUpdated"></span></div>
+  </div>
+
+  <main>
+    <section id="macro" class="panel active">
+      <div class="section-head"><div><h2>宏观流动性与价格</h2><p>M1、M2、社融、PMI与CPI；不同单位已分开标注。</p></div></div>
+      <div id="macroKpis" class="kpis"></div>
+      <div id="macroEmpty" class="empty" style="display:none">宏观数据暂不可用。请在 GitHub Actions 中运行“Update data and deploy”，或查看“数据状态”。</div>
+      <div class="grid2">
+        <div class="card"><div class="card-title">M1、M2同比与剪刀差</div><div class="card-subtitle">同比单位：%；剪刀差单位：百分点</div><div id="moneyGrowth" class="chart"></div></div>
+        <div class="card"><div class="card-title">M1、M2余额</div><div class="card-subtitle">单位：万亿元；M1+M2仅为机械合计，存在重复计算</div><div id="moneyBalance" class="chart"></div></div>
+      </div>
+      <div class="grid-even" style="margin-top:15px">
+        <div class="card"><div class="card-title">社会融资规模</div><div class="card-subtitle">增量与存量单位：万亿元；标准社融增速采用人民银行公布的存量同比</div><div id="socialFinancing" class="chart small"></div></div>
+        <div class="card"><div class="card-title">PMI与CPI</div><div class="card-subtitle">PMI为指数点；CPI为%</div><div id="pmiCpi" class="chart small"></div></div>
+      </div>
+    </section>
+
+    <section id="leaders" class="panel">
+      <div class="section-head"><div><h2>中美科技龙头</h2><p>中国：科创50与中证科技龙头；美国：七家大型科技公司。</p></div></div>
+      <div id="assetCards" class="asset-grid"></div>
+      <div id="marketEmpty" class="empty" style="display:none">市场行情暂不可用，请查看数据状态。</div>
+      <div class="card"><div class="card-title">标准化价格走势</div><div class="card-subtitle">观察窗口起点=100，便于跨市场比较</div><div id="marketChart" class="chart"></div></div>
+    </section>
+
+    <section id="valuation" class="panel">
+      <div class="section-head"><div><h2>历史估值与交易拥挤度</h2><p>估值以PE TTM为主；拥挤度=成交额排名前5%的沪深A股成交额÷两市总成交额。</p></div></div>
+      <div id="valuationCards" class="valuation-grid"></div>
+      <div id="valuationEmpty" class="empty" style="display:none">估值数据暂不可用，请查看数据状态。</div>
+      <div class="grid2" style="margin-top:15px">
+        <div class="card"><div class="card-title" id="valuationChartTitle">历史PE TTM</div><div class="card-subtitle">点击上方指数卡片切换</div><div id="valuationChart" class="chart"></div></div>
+        <div class="card"><div class="card-title">交易拥挤度</div><div class="card-subtitle">比例单位：%；成交额单位：万亿元</div><div id="crowdingChart" class="chart"></div><div id="crowdingKpi" class="hint"></div></div>
+      </div>
+    </section>
+
+    <section id="health" class="panel">
+      <div class="section-head"><div><h2>数据源与更新状态</h2><p>失败不会清空历史缓存；网页会继续展示上一次成功数据。</p></div></div>
+      <div id="sourceCards" class="source-list"></div>
+      <div class="card" style="margin-top:15px"><div class="card-title">指标口径与单位</div><table class="data-table"><thead><tr><th>指标</th><th>网页单位</th><th>口径</th></tr></thead><tbody>
+        <tr><td>M1、M2余额</td><td>万亿元</td><td>公开源原始亿元÷10,000</td></tr><tr><td>M1、M2同比</td><td>%</td><td>官方同比增速</td></tr><tr><td>M1−M2剪刀差</td><td>百分点</td><td>M1同比−M2同比</td></tr><tr><td>M1+M2机械合计</td><td>万亿元</td><td>M1已包含于M2，仅按需求展示，不代表独立统计总量</td></tr><tr><td>社融增量</td><td>万亿元</td><td>当月社会融资规模增量</td></tr><tr><td>社融存量</td><td>万亿元</td><td>中国人民银行社会融资规模存量统计表</td></tr><tr><td>社融增速</td><td>%</td><td>中国人民银行公布的社会融资规模存量同比；12个月累计增量同比仅作备用辅助</td></tr><tr><td>PMI</td><td>指数点</td><td>50为荣枯线</td></tr><tr><td>CPI</td><td>%</td><td>同比、环比</td></tr><tr><td>PE/PB</td><td>倍</td><td>按公开指数估值源展示；不同指数样本起点不同</td></tr><tr><td>交易拥挤度</td><td>%</td><td>前5%股票数量对应成交额÷沪深A股总成交额</td></tr>
+      </tbody></table></div>
+    </section>
+  </main>
+  <footer class="foot">{{ version }} · {{ disclaimer }}<br/>数据源包括公开宏观网页、中证指数、东方财富、Yahoo Finance、Stooq与AKShare适配器；正式商用前请确认底层数据许可。</footer>
+</div>
+<script>
+const DATA = {{ payload }};
+const CONFIG = {displayModeBar:false,responsive:true};
+const C={blue:'#2f6fed',cyan:'#18a5a8',amber:'#ca8711',red:'#cb4754',green:'#1d9a6c',navy:'#0c1a36',muted:'#8d99ad',grid:'#e9eef6'};
+const fmt=(v,d=1)=>v===null||v===undefined||Number.isNaN(Number(v))?'—':Number(v).toFixed(d);
+const signed=(v,d=1)=>v===null||v===undefined||Number.isNaN(Number(v))?'—':`${Number(v)>0?'+':''}${Number(v).toFixed(d)}%`;
+const cnDate=s=>!s?'—':String(s).length>=8?`${String(s).slice(0,4)}-${String(s).slice(4,6)}-${String(s).slice(6,8)}`:`${String(s).slice(0,4)}-${String(s).slice(4,6)}`;
+const layout=(extra={})=>Object.assign({margin:{l:48,r:18,t:20,b:42},paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{family:'Inter, PingFang SC, sans-serif',color:'#58657c',size:12},legend:{orientation:'h',y:1.12},hovermode:'x unified',xaxis:{gridcolor:C.grid,zeroline:false},yaxis:{gridcolor:C.grid,zeroline:false}},extra);
+
+document.getElementById('lastUpdated').textContent=`数据更新时间（北京时间）：${DATA.status.updated_at?DATA.status.updated_at.replace('T',' '):'尚未更新'}`;
+document.querySelectorAll('.tab').forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');setTimeout(()=>window.dispatchEvent(new Event('resize')),50)});
+
+function latestNonNull(rows,key){for(let i=rows.length-1;i>=0;i--){const v=rows[i][key];if(v!==null&&v!==undefined&&!Number.isNaN(Number(v)))return {v:Number(v),row:rows[i]}}return {v:null,row:rows[rows.length-1]||{}}}
+function kpi(label,value,unit,note,cls=''){return `<div class="kpi"><div class="kpi-label">${label}</div><div class="kpi-value ${cls}">${value}${value==='—'?'':` <small style="font-size:13px;color:#7d899f">${unit}</small>`}</div><div class="kpi-note">${note||''}</div></div>`}
+
+function renderMacro(){const m=DATA.macro;if(!m.length){document.getElementById('macroEmpty').style.display='block';return}const a=latestNonNull(m,'m1_yoy_pct'),b=latestNonNull(m,'m2_yoy_pct'),gap=latestNonNull(m,'m1_m2_gap_pp'),sfStock=latestNonNull(m,'sf_stock_yoy_pct'),sfAux=latestNonNull(m,'sf_12m_yoy_pct'),sf=sfStock.v!==null?sfStock:sfAux,pmi=latestNonNull(m,'pmi_manufacturing'),cpi=latestNonNull(m,'cpi_yoy_pct');const sfLabel=sfStock.v!==null?'社融存量同比':'社融12个月累计增量同比（备用）';document.getElementById('macroKpis').innerHTML=[kpi('M1同比',fmt(a.v),'%',cnDate(a.row.month)),kpi('M2同比',fmt(b.v),'%',cnDate(b.row.month)),kpi('M1−M2剪刀差',fmt(gap.v),'个百分点',cnDate(gap.row.month),gap.v>=0?'positive':'negative'),kpi(sfLabel,fmt(sf.v),'%',cnDate(sf.row.month),sf.v>=0?'positive':'negative'),kpi('制造业PMI',fmt(pmi.v),'点',cnDate(pmi.row.month),pmi.v>=50?'positive':'negative'),kpi('CPI同比',fmt(cpi.v),'%',cnDate(cpi.row.month),cpi.v>=0?'positive':'negative')].join('');const x=m.map(r=>cnDate(r.month));Plotly.newPlot('moneyGrowth',[{x,y:m.map(r=>r.m1_yoy_pct),name:'M1同比',mode:'lines',line:{color:C.blue,width:2.5}},{x,y:m.map(r=>r.m2_yoy_pct),name:'M2同比',mode:'lines',line:{color:C.cyan,width:2.5}},{x,y:m.map(r=>r.m1_m2_gap_pp),name:'剪刀差',type:'bar',marker:{color:'rgba(202,135,17,.35)'}}],layout({yaxis:{title:'% / 百分点',gridcolor:C.grid},barmode:'relative'}),CONFIG);Plotly.newPlot('moneyBalance',[{x,y:m.map(r=>r.m1_trillion),name:'M1',mode:'lines',line:{color:C.blue,width:2.4}},{x,y:m.map(r=>r.m2_trillion),name:'M2',mode:'lines',line:{color:C.navy,width:2.4}},{x,y:m.map(r=>r.m1_m2_mechanical_sum_trillion),name:'M1+M2机械合计',mode:'lines',line:{color:C.amber,dash:'dot'}}],layout({yaxis:{title:'万亿元',gridcolor:C.grid}}),CONFIG);Plotly.newPlot('socialFinancing',[{x,y:m.map(r=>r.sf_increment_trillion),name:'当月社融增量',type:'bar',marker:{color:'rgba(47,111,237,.40)'},yaxis:'y'},{x,y:m.map(r=>r.sf_stock_trillion),name:'社融存量',mode:'lines',line:{color:C.navy,width:2.4},yaxis:'y'},{x,y:m.map(r=>r.sf_stock_yoy_pct),name:'社融存量同比',mode:'lines',line:{color:C.red,width:2.3},yaxis:'y2'},{x,y:m.map(r=>r.sf_12m_yoy_pct),name:'12个月累计增量同比（辅助）',mode:'lines',line:{color:C.amber,width:1.7,dash:'dot'},yaxis:'y2'}],layout({yaxis:{title:'万亿元',gridcolor:C.grid},yaxis2:{title:'%',overlaying:'y',side:'right',showgrid:false}}),CONFIG);Plotly.newPlot('pmiCpi',[{x,y:m.map(r=>r.pmi_manufacturing),name:'制造业PMI',mode:'lines',line:{color:C.blue,width:2.4}},{x,y:m.map(r=>r.pmi_non_manufacturing),name:'非制造业PMI',mode:'lines',line:{color:C.cyan,width:2.2}},{x,y:m.map(r=>r.cpi_yoy_pct),name:'CPI同比',mode:'lines',line:{color:C.red,width:2},yaxis:'y2'}],layout({shapes:[{type:'line',x0:x[0],x1:x[x.length-1],y0:50,y1:50,line:{color:C.muted,dash:'dot'}}],yaxis:{title:'PMI点',gridcolor:C.grid},yaxis2:{title:'CPI %',overlaying:'y',side:'right',showgrid:false}}),CONFIG)}
+
+function renderMarket(){const rows=DATA.market,cards=DATA.market_cards;if(!rows.length){document.getElementById('marketEmpty').style.display='block';return}document.getElementById('assetCards').innerHTML=cards.map(c=>`<div class="asset"><div class="asset-top"><div><div class="asset-name">${c.name}</div><div class="asset-symbol">${c.symbol} · ${cnDate(c.trade_date)}</div></div><div class="${c.daily_pct>=0?'positive':'negative'}">${signed(c.daily_pct)}</div></div><div class="asset-price">${fmt(c.close,2)}</div><div class="asset-metrics"><div><span>当日</span><b class="${c.daily_pct>=0?'positive':'negative'}">${signed(c.daily_pct)}</b></div><div><span>年初至今</span><b class="${c.ytd_pct>=0?'positive':'negative'}">${signed(c.ytd_pct)}</b></div><div><span>近一年</span><b class="${c.one_year_pct>=0?'positive':'negative'}">${signed(c.one_year_pct)}</b></div></div></div>`).join('');const traces=[];const groups={};rows.forEach(r=>(groups[r.symbol]??=[]).push(r));Object.entries(groups).forEach(([symbol,g])=>{g.sort((a,b)=>a.trade_date.localeCompare(b.trade_date));const recent=g.slice(-504);const base=recent.find(x=>x.close)?.close;if(!base)return;traces.push({x:recent.map(x=>cnDate(x.trade_date)),y:recent.map(x=>x.close/base*100),name:recent[0].name,mode:'lines',line:{width:symbol.includes('CSI')||symbol.includes('.SH')?3:1.8}})});Plotly.newPlot('marketChart',traces,layout({yaxis:{title:'起点=100',gridcolor:C.grid}}),CONFIG)}
+
+function renderCrowding(){const c=DATA.crowding;if(c.length){const last=c[c.length-1];Plotly.newPlot('crowdingChart',[{x:c.map(r=>cnDate(r.trade_date)),y:c.map(r=>r.crowding_pct),name:'前5%成交额占比',mode:'lines',fill:'tozeroy',line:{color:C.cyan,width:2.3},fillcolor:'rgba(24,165,168,.12)'}],layout({yaxis:{title:'%',gridcolor:C.grid}}),CONFIG);document.getElementById('crowdingKpi').innerHTML=`最新 ${cnDate(last.trade_date)}：<b>${fmt(last.crowding_pct,1)}%</b>；前5%股票 ${last.top_count??'—'} 只 / 全市场 ${last.stock_count??'—'} 只；前5%成交额 ${fmt(last.top_amount_trillion,2)} 万亿元 / 两市总成交额 ${fmt(last.total_amount_trillion,2)} 万亿元。`}else{document.getElementById('crowdingKpi').textContent='交易拥挤度尚未形成历史记录；工作流每个交易日收盘后会追加一次。'}}
+let selectedValuation=null;function renderValuation(){renderCrowding();const s=DATA.valuation_summary;if(!s.length){document.getElementById('valuationEmpty').style.display='block';return}selectedValuation=selectedValuation||s[0].index_code;document.getElementById('valuationCards').innerHTML=s.map(v=>`<div class="valuation-card ${v.index_code===selectedValuation?'selected':''}" data-code="${v.index_code}"><div class="valuation-title"><strong>${v.index_name}</strong><span class="asset-symbol">${cnDate(v.trade_date)}</span></div><div class="multiple">${fmt(v.current_pe,2)}<small style="font-size:12px;color:#7d899f"> 倍 PE</small></div><div class="stat-row"><div class="stat">历史均值<b>${fmt(v.pe_mean,2)}</b></div><div class="stat">中位数<b>${fmt(v.pe_median,2)}</b></div><div class="stat">历史分位<b>${fmt(v.pe_percentile,0)}%</b></div></div><div class="bar"><i style="width:${Math.min(100,Math.max(0,v.pe_percentile||0))}%"></i></div></div>`).join('');document.querySelectorAll('.valuation-card').forEach(x=>x.onclick=()=>{selectedValuation=x.dataset.code;renderValuation()});const rows=DATA.valuation.filter(x=>x.index_code===selectedValuation);const meta=s.find(x=>x.index_code===selectedValuation);document.getElementById('valuationChartTitle').textContent=`${meta.index_name} 历史PE TTM`;const x=rows.map(r=>cnDate(r.trade_date));Plotly.newPlot('valuationChart',[{x,y:rows.map(r=>r.pe_ttm),name:'PE TTM',mode:'lines',line:{color:C.blue,width:2.2}},{x,y:rows.map(()=>meta.pe_mean),name:'历史均值',mode:'lines',line:{color:C.amber,dash:'dash'}},{x,y:rows.map(()=>meta.pe_q25),name:'25%分位',mode:'lines',line:{color:C.green,dash:'dot'}},{x,y:rows.map(()=>meta.pe_q75),name:'75%分位',mode:'lines',line:{color:C.red,dash:'dot'}}],layout({yaxis:{title:'倍',gridcolor:C.grid}}),CONFIG)}
+
+function renderHealth(){const ds=DATA.status.datasets||{};const labels={macro:'宏观数据',market:'中美行情',valuation:'历史估值',crowding:'交易拥挤度'};document.getElementById('sourceCards').innerHTML=Object.entries(labels).map(([key,label])=>{const d=ds[key]||{status:'empty'};return `<div class="source-card"><div class="source-status ${d.status}">${label} · ${d.status||'empty'}</div><div class="asset-symbol" style="margin-top:8px">最新日期：${cnDate(d.latest_date)}</div><div class="asset-symbol">本次写入：${d.rows??0} 行</div>${d.error?`<div class="hint">${String(d.error).slice(0,360)}</div>`:''}</div>`}).join('')}
+renderMacro();renderMarket();renderValuation();renderHealth();
+</script>
+</body>
+</html>'''
+
+
+def main() -> None:
+    ensure_dirs()
+    settings = load_settings()
+    macro = read_csv_safe(DATA_DIR / "macro.csv")
+    market = read_csv_safe(DATA_DIR / "market.csv")
+    valuation = read_csv_safe(DATA_DIR / "valuation.csv")
+    crowding = read_csv_safe(DATA_DIR / "crowding.csv")
+    if not market.empty:
+        market = market.sort_values(["symbol", "trade_date"])
+    if not valuation.empty:
+        valuation = valuation.sort_values(["index_code", "trade_date"])
+    if not crowding.empty:
+        crowding = crowding.sort_values("trade_date")
+    payload = {
+        "status": read_status(),
+        "macro": dataframe_to_records(macro),
+        "market": dataframe_to_records(market, max_rows=9 * 760),
+        "market_cards": latest_market_cards(market),
+        "valuation": dataframe_to_records(valuation, max_rows=7 * 4000),
+        "valuation_summary": valuation_summary(valuation),
+        "crowding": dataframe_to_records(crowding),
+    }
+    template = Template(HTML)
+    html = template.render(
+        title=f"{settings['app']['name']} {settings['app']['title_cn']}",
+        version=f"MacroScope Public v{settings['app']['version']}",
+        disclaimer=settings["app"]["disclaimer"],
+        payload=json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
+    )
+    PUBLIC_DIR.mkdir(parents=True, exist_ok=True)
+    (PUBLIC_DIR / "index.html").write_text(html, encoding="utf-8")
+    (PUBLIC_DIR / ".nojekyll").write_text("", encoding="utf-8")
+    print(f"Built {PUBLIC_DIR / 'index.html'} ({len(html):,} chars)")
+
+
+if __name__ == "__main__":
+    main()
