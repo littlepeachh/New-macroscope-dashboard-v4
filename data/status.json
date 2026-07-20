@@ -1,6 +1,155 @@
 {
   "app_version": "4.0.0",
-  "updated_at": null,
-  "overall_status": "empty",
-  "datasets": {}
+  "updated_at": "2026-07-20T23:32:57+08:00",
+  "datasets": {
+    "macro": {
+      "status": "success",
+      "rows": 168,
+      "started_at": "2026-07-20T23:32:57+08:00",
+      "finished_at": "2026-07-20T23:33:22+08:00",
+      "latest_date": "202606",
+      "total_cached_rows": 168,
+      "source_details": {
+        "components": {
+          "money_supply": {
+            "status": "success",
+            "rows": 168,
+            "source": "东方财富 / AKShare"
+          },
+          "social_financing": {
+            "status": "success",
+            "rows": 103,
+            "source": "商务数据中心 / AKShare"
+          },
+          "social_financing_stock": {
+            "status": "success",
+            "rows": 6,
+            "source": "中国人民银行官方社会融资规模存量统计表"
+          },
+          "pmi": {
+            "status": "success",
+            "rows": 168,
+            "source": "东方财富 / AKShare"
+          },
+          "cpi": {
+            "status": "success",
+            "rows": 168,
+            "source": "东方财富 / AKShare"
+          }
+        },
+        "messages": [
+          "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
+        ]
+      },
+      "cached_rows": 168
+    },
+    "market": {
+      "status": "success",
+      "rows": 14680,
+      "started_at": "2026-07-20T23:33:22+08:00",
+      "finished_at": "2026-07-20T23:33:36+08:00",
+      "latest_date": "20260720",
+      "total_cached_rows": 14680,
+      "symbols": {
+        "000688.SH": {
+          "status": "success",
+          "rows": 1586,
+          "source": "中证指数官网 / AKShare"
+        },
+        "931087.CSI": {
+          "status": "success",
+          "rows": 1586,
+          "source": "中证指数官网 / AKShare"
+        },
+        "AAPL": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "MSFT": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "NVDA": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "AMZN": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "GOOGL": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "META": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        },
+        "TSLA": {
+          "status": "success",
+          "rows": 1644,
+          "source": "Yahoo Finance / yfinance"
+        }
+      },
+      "cached_rows": 14680
+    },
+    "valuation": {
+      "status": "success",
+      "rows": 23248,
+      "started_at": "2026-07-20T23:33:36+08:00",
+      "finished_at": "2026-07-20T23:34:07+08:00",
+      "latest_date": "20260720",
+      "total_cached_rows": 23248,
+      "indices": {
+        "000001.SH": {
+          "status": "success",
+          "rows": 5476,
+          "source": "中证指数官网 / AKShare"
+        },
+        "399001.SZ": {
+          "status": "failed",
+          "error": "DataFetchError(\"估值数据失败: 中证指数: ValueError('Length mismatch: Expected axis has 0 elements, new values have 16 elements') | 乐咕乐股: KeyError('深证成指')\")"
+        },
+        "399006.SZ": {
+          "status": "failed",
+          "error": "DataFetchError(\"估值数据失败: 中证指数: ValueError('Length mismatch: Expected axis has 0 elements, new values have 16 elements') | 乐咕乐股: KeyError('创业板指')\")"
+        },
+        "000688.SH": {
+          "status": "success",
+          "rows": 1587,
+          "source": "中证指数官网 / AKShare"
+        },
+        "000016.SH": {
+          "status": "success",
+          "rows": 5476,
+          "source": "中证指数官网 / AKShare"
+        },
+        "000300.SH": {
+          "status": "success",
+          "rows": 5475,
+          "source": "中证指数官网 / AKShare"
+        },
+        "000905.SH": {
+          "status": "success",
+          "rows": 5234,
+          "source": "中证指数官网 / AKShare"
+        }
+      },
+      "cached_rows": 23248
+    },
+    "crowding": {
+      "status": "failed",
+      "rows": 0,
+      "started_at": "2026-07-20T23:34:07+08:00",
+      "finished_at": "2026-07-20T23:34:51+08:00",
+      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")"
+    }
+  },
+  "overall_status": "partial"
 }
