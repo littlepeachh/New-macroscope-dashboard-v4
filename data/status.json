@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-07-21T11:28:27+08:00",
+  "updated_at": "2026-07-21T17:37:22+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 168,
-      "started_at": "2026-07-21T11:28:27+08:00",
-      "finished_at": "2026-07-21T11:28:44+08:00",
+      "started_at": "2026-07-21T17:37:22+08:00",
+      "finished_at": "2026-07-21T17:37:41+08:00",
       "latest_date": "202606",
       "total_cached_rows": 168,
       "source_details": {
@@ -46,8 +46,8 @@
     "market": {
       "status": "success",
       "rows": 14680,
-      "started_at": "2026-07-21T11:28:44+08:00",
-      "finished_at": "2026-07-21T11:28:58+08:00",
+      "started_at": "2026-07-21T17:37:41+08:00",
+      "finished_at": "2026-07-21T17:37:54+08:00",
       "latest_date": "20260720",
       "total_cached_rows": 14680,
       "symbols": {
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23248,
-      "started_at": "2026-07-21T11:28:58+08:00",
-      "finished_at": "2026-07-21T11:29:22+08:00",
+      "started_at": "2026-07-21T17:37:54+08:00",
+      "finished_at": "2026-07-21T17:38:13+08:00",
       "latest_date": "20260720",
       "total_cached_rows": 23248,
       "indices": {
@@ -144,14 +144,11 @@
       "cached_rows": 23248
     },
     "crowding": {
-      "status": "partial",
+      "status": "failed",
       "rows": 0,
-      "started_at": "2026-07-21T11:29:22+08:00",
-      "finished_at": "2026-07-21T11:29:22+08:00",
-      "latest_date": null,
-      "total_cached_rows": 0,
-      "skipped": true,
-      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。"
+      "started_at": "2026-07-21T17:38:13+08:00",
+      "finished_at": "2026-07-21T17:39:02+08:00",
+      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")"
     }
   },
   "overall_status": "partial"
