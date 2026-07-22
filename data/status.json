@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-07-21T23:24:41+08:00",
+  "updated_at": "2026-07-22T17:37:15+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 168,
-      "started_at": "2026-07-21T23:24:41+08:00",
-      "finished_at": "2026-07-21T23:25:07+08:00",
+      "started_at": "2026-07-22T17:37:15+08:00",
+      "finished_at": "2026-07-22T17:37:36+08:00",
       "latest_date": "202606",
       "total_cached_rows": 168,
       "source_details": {
@@ -46,8 +46,8 @@
     "market": {
       "status": "success",
       "rows": 14689,
-      "started_at": "2026-07-21T23:25:07+08:00",
-      "finished_at": "2026-07-21T23:25:19+08:00",
+      "started_at": "2026-07-22T17:37:36+08:00",
+      "finished_at": "2026-07-22T17:37:53+08:00",
       "latest_date": "20260721",
       "total_cached_rows": 14689,
       "symbols": {
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23253,
-      "started_at": "2026-07-21T23:25:19+08:00",
-      "finished_at": "2026-07-21T23:25:46+08:00",
+      "started_at": "2026-07-22T17:37:53+08:00",
+      "finished_at": "2026-07-22T17:38:19+08:00",
       "latest_date": "20260721",
       "total_cached_rows": 23253,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "failed",
       "rows": 0,
-      "started_at": "2026-07-21T23:25:46+08:00",
-      "finished_at": "2026-07-21T23:26:31+08:00",
+      "started_at": "2026-07-22T17:38:19+08:00",
+      "finished_at": "2026-07-22T17:39:09+08:00",
       "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")"
     }
   },
