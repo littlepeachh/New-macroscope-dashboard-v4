@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-07-23T17:31:11+08:00",
+  "updated_at": "2026-07-23T23:46:20+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 168,
-      "started_at": "2026-07-23T17:31:11+08:00",
-      "finished_at": "2026-07-23T17:31:33+08:00",
+      "started_at": "2026-07-23T23:46:20+08:00",
+      "finished_at": "2026-07-23T23:46:44+08:00",
       "latest_date": "202606",
       "total_cached_rows": 168,
       "source_details": {
@@ -45,67 +45,67 @@
     },
     "market": {
       "status": "success",
-      "rows": 14698,
-      "started_at": "2026-07-23T17:31:33+08:00",
-      "finished_at": "2026-07-23T17:31:46+08:00",
-      "latest_date": "20260722",
-      "total_cached_rows": 14698,
+      "rows": 14707,
+      "started_at": "2026-07-23T23:46:44+08:00",
+      "finished_at": "2026-07-23T23:47:00+08:00",
+      "latest_date": "20260723",
+      "total_cached_rows": 14707,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1588,
+          "rows": 1589,
           "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1588,
+          "rows": 1589,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1646,
+          "rows": 1647,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 14698
+      "cached_rows": 14707
     },
     "valuation": {
       "status": "success",
-      "rows": 23262,
-      "started_at": "2026-07-23T17:31:46+08:00",
-      "finished_at": "2026-07-23T17:32:15+08:00",
+      "rows": 23263,
+      "started_at": "2026-07-23T23:47:00+08:00",
+      "finished_at": "2026-07-23T23:47:22+08:00",
       "latest_date": "20260723",
-      "total_cached_rows": 23262,
+      "total_cached_rows": 23263,
       "indices": {
         "000001.SH": {
           "status": "success",
@@ -132,7 +132,7 @@
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5477,
+          "rows": 5478,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
@@ -141,13 +141,13 @@
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23262
+      "cached_rows": 23263
     },
     "crowding": {
       "status": "failed",
       "rows": 0,
-      "started_at": "2026-07-23T17:32:15+08:00",
-      "finished_at": "2026-07-23T17:33:11+08:00",
+      "started_at": "2026-07-23T23:47:22+08:00",
+      "finished_at": "2026-07-23T23:48:24+08:00",
       "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
       "cached_rows": 1,
       "latest_date": "20260722",
