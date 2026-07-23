@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-07-22T23:22:10+08:00",
+  "updated_at": "2026-07-23T17:31:11+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 168,
-      "started_at": "2026-07-22T23:22:10+08:00",
-      "finished_at": "2026-07-22T23:22:35+08:00",
+      "started_at": "2026-07-23T17:31:11+08:00",
+      "finished_at": "2026-07-23T17:31:33+08:00",
       "latest_date": "202606",
       "total_cached_rows": 168,
       "source_details": {
@@ -45,16 +45,16 @@
     },
     "market": {
       "status": "success",
-      "rows": 14697,
-      "started_at": "2026-07-22T23:22:35+08:00",
-      "finished_at": "2026-07-22T23:23:52+08:00",
+      "rows": 14698,
+      "started_at": "2026-07-23T17:31:33+08:00",
+      "finished_at": "2026-07-23T17:31:46+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 14698,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1587,
-          "source": "东方财富 / AKShare"
+          "rows": 1588,
+          "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
@@ -101,15 +101,15 @@
     },
     "valuation": {
       "status": "success",
-      "rows": 23258,
-      "started_at": "2026-07-22T23:23:52+08:00",
-      "finished_at": "2026-07-22T23:24:19+08:00",
-      "latest_date": "20260722",
-      "total_cached_rows": 23258,
+      "rows": 23262,
+      "started_at": "2026-07-23T17:31:46+08:00",
+      "finished_at": "2026-07-23T17:32:15+08:00",
+      "latest_date": "20260723",
+      "total_cached_rows": 23262,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5478,
+          "rows": 5479,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,12 +122,12 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1589,
+          "rows": 1590,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5478,
+          "rows": 5479,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
@@ -137,22 +137,22 @@
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5236,
+          "rows": 5237,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23258
+      "cached_rows": 23262
     },
     "crowding": {
-      "status": "success",
-      "rows": 1,
-      "started_at": "2026-07-22T23:24:19+08:00",
-      "finished_at": "2026-07-22T23:28:16+08:00",
+      "status": "failed",
+      "rows": 0,
+      "started_at": "2026-07-23T17:32:15+08:00",
+      "finished_at": "2026-07-23T17:33:11+08:00",
+      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
+      "cached_rows": 1,
       "latest_date": "20260722",
-      "total_cached_rows": 1,
-      "source": "沪深京A股实时行情 / AKShare",
-      "cached_rows": 1
+      "serving_cached_data": true
     }
   },
-  "overall_status": "success"
+  "overall_status": "partial"
 }
