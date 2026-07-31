@@ -1,14 +1,14 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-07-30T23:35:47+08:00",
+  "updated_at": "2026-07-31T18:10:09+08:00",
   "datasets": {
     "macro": {
       "status": "success",
-      "rows": 168,
-      "started_at": "2026-07-30T23:35:47+08:00",
-      "finished_at": "2026-07-30T23:36:11+08:00",
-      "latest_date": "202606",
-      "total_cached_rows": 168,
+      "rows": 169,
+      "started_at": "2026-07-31T18:10:09+08:00",
+      "finished_at": "2026-07-31T18:10:33+08:00",
+      "latest_date": "202607",
+      "total_cached_rows": 169,
       "source_details": {
         "components": {
           "money_supply": {
@@ -28,7 +28,7 @@
           },
           "pmi": {
             "status": "success",
-            "rows": 168,
+            "rows": 169,
             "source": "东方财富 / AKShare"
           },
           "cpi": {
@@ -41,24 +41,24 @@
           "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
         ]
       },
-      "cached_rows": 168
+      "cached_rows": 169
     },
     "market": {
       "status": "success",
-      "rows": 14752,
-      "started_at": "2026-07-30T23:36:11+08:00",
-      "finished_at": "2026-07-30T23:36:24+08:00",
-      "latest_date": "20260730",
-      "total_cached_rows": 14752,
+      "rows": 14754,
+      "started_at": "2026-07-31T18:10:33+08:00",
+      "finished_at": "2026-07-31T18:10:55+08:00",
+      "latest_date": "20260731",
+      "total_cached_rows": 14754,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1594,
+          "rows": 1595,
           "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1594,
+          "rows": 1595,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
@@ -97,19 +97,19 @@
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 14752
+      "cached_rows": 14754
     },
     "valuation": {
       "status": "success",
-      "rows": 23288,
-      "started_at": "2026-07-30T23:36:24+08:00",
-      "finished_at": "2026-07-30T23:36:48+08:00",
-      "latest_date": "20260730",
-      "total_cached_rows": 23288,
+      "rows": 23293,
+      "started_at": "2026-07-31T18:10:55+08:00",
+      "finished_at": "2026-07-31T18:11:25+08:00",
+      "latest_date": "20260731",
+      "total_cached_rows": 23293,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5484,
+          "rows": 5485,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,32 +122,32 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1595,
+          "rows": 1596,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5484,
+          "rows": 5485,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5483,
+          "rows": 5484,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5242,
+          "rows": 5243,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23288
+      "cached_rows": 23293
     },
     "crowding": {
       "status": "failed",
       "rows": 0,
-      "started_at": "2026-07-30T23:36:48+08:00",
-      "finished_at": "2026-07-30T23:37:41+08:00",
+      "started_at": "2026-07-31T18:11:25+08:00",
+      "finished_at": "2026-07-31T18:12:14+08:00",
       "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
       "cached_rows": 1,
       "latest_date": "20260722",
