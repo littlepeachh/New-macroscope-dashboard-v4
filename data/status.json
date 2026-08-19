@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-08-18T18:01:09+08:00",
+  "updated_at": "2026-08-19T11:15:35+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 169,
-      "started_at": "2026-08-18T18:01:09+08:00",
-      "finished_at": "2026-08-18T18:01:25+08:00",
+      "started_at": "2026-08-19T11:15:35+08:00",
+      "finished_at": "2026-08-19T11:15:50+08:00",
       "latest_date": "202607",
       "total_cached_rows": 169,
       "source_details": {
@@ -17,9 +17,8 @@
             "source": "东方财富 / AKShare"
           },
           "social_financing": {
-            "status": "success",
-            "rows": 103,
-            "source": "商务数据中心 / AKShare"
+            "status": "failed",
+            "error": "公开社融源失败"
           },
           "social_financing_stock": {
             "status": "success",
@@ -38,6 +37,7 @@
           }
         },
         "messages": [
+          "社会融资规模: SSLError(MaxRetryError(\"HTTPSConnectionPool(host='data.mofcom.gov.cn', port=443): Max retries exceeded with url: /datamofcom/front/gnmy/shrzgmQuery (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1010)')))\"))",
           "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
         ]
       },
@@ -45,11 +45,11 @@
     },
     "market": {
       "status": "success",
-      "rows": 14855,
-      "started_at": "2026-08-18T18:01:25+08:00",
-      "finished_at": "2026-08-18T18:01:41+08:00",
+      "rows": 14869,
+      "started_at": "2026-08-19T11:15:50+08:00",
+      "finished_at": "2026-08-19T11:16:18+08:00",
       "latest_date": "20260818",
-      "total_cached_rows": 14862,
+      "total_cached_rows": 14869,
       "symbols": {
         "000688.SH": {
           "status": "success",
@@ -63,47 +63,47 @@
         },
         "AAPL": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1663,
+          "rows": 1665,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 14862
+      "cached_rows": 14869
     },
     "valuation": {
       "status": "success",
       "rows": 23353,
-      "started_at": "2026-08-18T18:01:41+08:00",
-      "finished_at": "2026-08-18T18:02:06+08:00",
+      "started_at": "2026-08-19T11:16:18+08:00",
+      "finished_at": "2026-08-19T11:16:39+08:00",
       "latest_date": "20260818",
       "total_cached_rows": 23353,
       "indices": {
@@ -144,14 +144,15 @@
       "cached_rows": 23353
     },
     "crowding": {
-      "status": "failed",
+      "status": "partial",
       "rows": 0,
-      "started_at": "2026-08-18T18:02:06+08:00",
-      "finished_at": "2026-08-18T18:02:51+08:00",
-      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
-      "cached_rows": 1,
+      "started_at": "2026-08-19T11:16:39+08:00",
+      "finished_at": "2026-08-19T11:16:39+08:00",
       "latest_date": "20260722",
-      "serving_cached_data": true
+      "total_cached_rows": 1,
+      "skipped": true,
+      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
+      "cached_rows": 1
     }
   },
   "overall_status": "partial"
