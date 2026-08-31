@@ -1,14 +1,14 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-08-30T13:21:03+08:00",
+  "updated_at": "2026-08-31T13:29:14+08:00",
   "datasets": {
     "macro": {
       "status": "success",
-      "rows": 169,
-      "started_at": "2026-08-30T13:21:03+08:00",
-      "finished_at": "2026-08-30T13:21:21+08:00",
-      "latest_date": "202607",
-      "total_cached_rows": 169,
+      "rows": 170,
+      "started_at": "2026-08-31T13:29:14+08:00",
+      "finished_at": "2026-08-31T13:29:35+08:00",
+      "latest_date": "202608",
+      "total_cached_rows": 170,
       "source_details": {
         "components": {
           "money_supply": {
@@ -28,7 +28,7 @@
           },
           "pmi": {
             "status": "success",
-            "rows": 169,
+            "rows": 170,
             "source": "东方财富 / AKShare"
           },
           "cpi": {
@@ -41,13 +41,13 @@
           "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
         ]
       },
-      "cached_rows": 169
+      "cached_rows": 170
     },
     "market": {
       "status": "success",
       "rows": 14941,
-      "started_at": "2026-08-30T13:21:21+08:00",
-      "finished_at": "2026-08-30T13:21:33+08:00",
+      "started_at": "2026-08-31T13:29:35+08:00",
+      "finished_at": "2026-08-31T13:30:03+08:00",
       "latest_date": "20260828",
       "total_cached_rows": 14941,
       "symbols": {
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23393,
-      "started_at": "2026-08-30T13:21:33+08:00",
-      "finished_at": "2026-08-30T13:22:00+08:00",
+      "started_at": "2026-08-31T13:30:03+08:00",
+      "finished_at": "2026-08-31T13:30:37+08:00",
       "latest_date": "20260828",
       "total_cached_rows": 23393,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-08-30T13:22:00+08:00",
-      "finished_at": "2026-08-30T13:22:00+08:00",
+      "started_at": "2026-08-31T13:30:37+08:00",
+      "finished_at": "2026-08-31T13:30:37+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
