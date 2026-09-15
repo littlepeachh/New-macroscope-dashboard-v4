@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-09-14T23:13:33+08:00",
+  "updated_at": "2026-09-15T12:50:44+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 170,
-      "started_at": "2026-09-14T23:13:33+08:00",
-      "finished_at": "2026-09-14T23:13:55+08:00",
+      "started_at": "2026-09-15T12:50:44+08:00",
+      "finished_at": "2026-09-15T12:51:05+08:00",
       "latest_date": "202608",
       "total_cached_rows": 170,
       "source_details": {
@@ -46,8 +46,8 @@
     "market": {
       "status": "success",
       "rows": 15033,
-      "started_at": "2026-09-14T23:13:55+08:00",
-      "finished_at": "2026-09-14T23:14:09+08:00",
+      "started_at": "2026-09-15T12:51:05+08:00",
+      "finished_at": "2026-09-15T12:51:19+08:00",
       "latest_date": "20260914",
       "total_cached_rows": 15033,
       "symbols": {
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23448,
-      "started_at": "2026-09-14T23:14:09+08:00",
-      "finished_at": "2026-09-14T23:14:39+08:00",
+      "started_at": "2026-09-15T12:51:19+08:00",
+      "finished_at": "2026-09-15T12:51:48+08:00",
       "latest_date": "20260914",
       "total_cached_rows": 23448,
       "indices": {
@@ -144,14 +144,15 @@
       "cached_rows": 23448
     },
     "crowding": {
-      "status": "failed",
+      "status": "partial",
       "rows": 0,
-      "started_at": "2026-09-14T23:14:39+08:00",
-      "finished_at": "2026-09-14T23:15:27+08:00",
-      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
-      "cached_rows": 1,
+      "started_at": "2026-09-15T12:51:48+08:00",
+      "finished_at": "2026-09-15T12:51:48+08:00",
       "latest_date": "20260722",
-      "serving_cached_data": true
+      "total_cached_rows": 1,
+      "skipped": true,
+      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
+      "cached_rows": 1
     }
   },
   "overall_status": "partial"
