@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-09-21T23:18:35+08:00",
+  "updated_at": "2026-09-22T12:50:43+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 170,
-      "started_at": "2026-09-21T23:18:35+08:00",
-      "finished_at": "2026-09-21T23:19:00+08:00",
+      "started_at": "2026-09-22T12:50:43+08:00",
+      "finished_at": "2026-09-22T12:51:03+08:00",
       "latest_date": "202608",
       "total_cached_rows": 170,
       "source_details": {
@@ -46,15 +46,15 @@
     "market": {
       "status": "success",
       "rows": 15078,
-      "started_at": "2026-09-21T23:19:00+08:00",
-      "finished_at": "2026-09-21T23:19:13+08:00",
-      "latest_date": "20260921",
-      "total_cached_rows": 15078,
+      "started_at": "2026-09-22T12:51:03+08:00",
+      "finished_at": "2026-09-22T12:52:04+08:00",
+      "latest_date": "20260922",
+      "total_cached_rows": 15079,
       "symbols": {
         "000688.SH": {
           "status": "success",
           "rows": 1631,
-          "source": "中证指数官网 / AKShare"
+          "source": "东方财富 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
@@ -97,13 +97,13 @@
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15078
+      "cached_rows": 15079
     },
     "valuation": {
       "status": "success",
       "rows": 23473,
-      "started_at": "2026-09-21T23:19:13+08:00",
-      "finished_at": "2026-09-21T23:19:34+08:00",
+      "started_at": "2026-09-22T12:52:04+08:00",
+      "finished_at": "2026-09-22T12:52:29+08:00",
       "latest_date": "20260921",
       "total_cached_rows": 23473,
       "indices": {
@@ -144,14 +144,15 @@
       "cached_rows": 23473
     },
     "crowding": {
-      "status": "failed",
+      "status": "partial",
       "rows": 0,
-      "started_at": "2026-09-21T23:19:34+08:00",
-      "finished_at": "2026-09-21T23:20:18+08:00",
-      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
-      "cached_rows": 1,
+      "started_at": "2026-09-22T12:52:29+08:00",
+      "finished_at": "2026-09-22T12:52:29+08:00",
       "latest_date": "20260722",
-      "serving_cached_data": true
+      "total_cached_rows": 1,
+      "skipped": true,
+      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
+      "cached_rows": 1
     }
   },
   "overall_status": "partial"
