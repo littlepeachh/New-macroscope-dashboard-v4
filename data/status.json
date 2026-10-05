@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-04T13:48:04+08:00",
+  "updated_at": "2026-10-05T13:34:10+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-04T13:48:04+08:00",
-      "finished_at": "2026-10-04T13:48:25+08:00",
+      "started_at": "2026-10-05T13:34:10+08:00",
+      "finished_at": "2026-10-05T13:34:31+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -46,8 +46,8 @@
     "market": {
       "status": "success",
       "rows": 15153,
-      "started_at": "2026-10-04T13:48:25+08:00",
-      "finished_at": "2026-10-04T13:48:39+08:00",
+      "started_at": "2026-10-05T13:34:31+08:00",
+      "finished_at": "2026-10-05T13:34:45+08:00",
       "latest_date": "20261002",
       "total_cached_rows": 15153,
       "symbols": {
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23503,
-      "started_at": "2026-10-04T13:48:39+08:00",
-      "finished_at": "2026-10-04T13:49:05+08:00",
+      "started_at": "2026-10-05T13:34:45+08:00",
+      "finished_at": "2026-10-05T13:35:09+08:00",
       "latest_date": "20260930",
       "total_cached_rows": 23503,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-10-04T13:49:05+08:00",
-      "finished_at": "2026-10-04T13:49:05+08:00",
+      "started_at": "2026-10-05T13:35:09+08:00",
+      "finished_at": "2026-10-05T13:35:09+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
