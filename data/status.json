@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-12T13:51:41+08:00",
+  "updated_at": "2026-10-13T02:11:06+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-12T13:51:41+08:00",
-      "finished_at": "2026-10-12T13:52:04+08:00",
+      "started_at": "2026-10-13T02:11:06+08:00",
+      "finished_at": "2026-10-13T02:11:24+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -45,71 +45,71 @@
     },
     "market": {
       "status": "success",
-      "rows": 15192,
-      "started_at": "2026-10-12T13:52:04+08:00",
-      "finished_at": "2026-10-12T13:52:23+08:00",
-      "latest_date": "20261009",
-      "total_cached_rows": 15192,
+      "rows": 15201,
+      "started_at": "2026-10-13T02:11:24+08:00",
+      "finished_at": "2026-10-13T02:11:39+08:00",
+      "latest_date": "20261012",
+      "total_cached_rows": 15201,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1639,
+          "rows": 1640,
           "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1639,
+          "rows": 1640,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1702,
+          "rows": 1703,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15192
+      "cached_rows": 15201
     },
     "valuation": {
       "status": "success",
-      "rows": 23513,
-      "started_at": "2026-10-12T13:52:23+08:00",
-      "finished_at": "2026-10-12T13:52:48+08:00",
-      "latest_date": "20261009",
-      "total_cached_rows": 23513,
+      "rows": 23518,
+      "started_at": "2026-10-13T02:11:39+08:00",
+      "finished_at": "2026-10-13T02:12:03+08:00",
+      "latest_date": "20261012",
+      "total_cached_rows": 23518,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5529,
+          "rows": 5530,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,32 +122,32 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1640,
+          "rows": 1641,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5529,
+          "rows": 5530,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5528,
+          "rows": 5529,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5287,
+          "rows": 5288,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23513
+      "cached_rows": 23518
     },
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-10-12T13:52:48+08:00",
-      "finished_at": "2026-10-12T13:52:48+08:00",
+      "started_at": "2026-10-13T02:12:03+08:00",
+      "finished_at": "2026-10-13T02:12:03+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
