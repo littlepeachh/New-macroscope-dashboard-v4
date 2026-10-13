@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-13T02:11:06+08:00",
+  "updated_at": "2026-10-13T14:44:37+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-13T02:11:06+08:00",
-      "finished_at": "2026-10-13T02:11:24+08:00",
+      "started_at": "2026-10-13T14:44:37+08:00",
+      "finished_at": "2026-10-13T14:45:04+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -46,15 +46,15 @@
     "market": {
       "status": "success",
       "rows": 15201,
-      "started_at": "2026-10-13T02:11:24+08:00",
-      "finished_at": "2026-10-13T02:11:39+08:00",
-      "latest_date": "20261012",
-      "total_cached_rows": 15201,
+      "started_at": "2026-10-13T14:45:04+08:00",
+      "finished_at": "2026-10-13T14:45:55+08:00",
+      "latest_date": "20261013",
+      "total_cached_rows": 15202,
       "symbols": {
         "000688.SH": {
           "status": "success",
           "rows": 1640,
-          "source": "中证指数官网 / AKShare"
+          "source": "东方财富 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
@@ -97,13 +97,13 @@
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15201
+      "cached_rows": 15202
     },
     "valuation": {
       "status": "success",
       "rows": 23518,
-      "started_at": "2026-10-13T02:11:39+08:00",
-      "finished_at": "2026-10-13T02:12:03+08:00",
+      "started_at": "2026-10-13T14:45:55+08:00",
+      "finished_at": "2026-10-13T14:46:22+08:00",
       "latest_date": "20261012",
       "total_cached_rows": 23518,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-10-13T02:12:03+08:00",
-      "finished_at": "2026-10-13T02:12:03+08:00",
+      "started_at": "2026-10-13T14:46:22+08:00",
+      "finished_at": "2026-10-13T14:46:22+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
