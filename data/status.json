@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-14T00:24:08+08:00",
+  "updated_at": "2026-10-14T12:48:45+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-14T00:24:08+08:00",
-      "finished_at": "2026-10-14T00:24:28+08:00",
+      "started_at": "2026-10-14T12:48:45+08:00",
+      "finished_at": "2026-10-14T12:49:07+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -33,7 +33,7 @@
           },
           "cpi": {
             "status": "success",
-            "rows": 170,
+            "rows": 171,
             "source": "东方财富 / AKShare"
           }
         },
@@ -45,16 +45,16 @@
     },
     "market": {
       "status": "success",
-      "rows": 15209,
-      "started_at": "2026-10-14T00:24:28+08:00",
-      "finished_at": "2026-10-14T00:25:29+08:00",
+      "rows": 15210,
+      "started_at": "2026-10-14T12:49:07+08:00",
+      "finished_at": "2026-10-14T12:49:21+08:00",
       "latest_date": "20261013",
       "total_cached_rows": 15210,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1640,
-          "source": "东方财富 / AKShare"
+          "rows": 1641,
+          "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23523,
-      "started_at": "2026-10-14T00:25:29+08:00",
-      "finished_at": "2026-10-14T00:25:55+08:00",
+      "started_at": "2026-10-14T12:49:21+08:00",
+      "finished_at": "2026-10-14T12:49:46+08:00",
       "latest_date": "20261013",
       "total_cached_rows": 23523,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-10-14T00:25:55+08:00",
-      "finished_at": "2026-10-14T00:25:55+08:00",
+      "started_at": "2026-10-14T12:49:46+08:00",
+      "finished_at": "2026-10-14T12:49:46+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
