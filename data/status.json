@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-16T12:26:31+08:00",
+  "updated_at": "2026-10-16T21:30:10+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-16T12:26:31+08:00",
-      "finished_at": "2026-10-16T12:26:54+08:00",
+      "started_at": "2026-10-16T21:30:10+08:00",
+      "finished_at": "2026-10-16T21:30:31+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -45,71 +45,71 @@
     },
     "market": {
       "status": "success",
-      "rows": 15228,
-      "started_at": "2026-10-16T12:26:54+08:00",
-      "finished_at": "2026-10-16T12:28:01+08:00",
+      "rows": 15237,
+      "started_at": "2026-10-16T21:30:31+08:00",
+      "finished_at": "2026-10-16T21:30:49+08:00",
       "latest_date": "20261016",
-      "total_cached_rows": 15229,
+      "total_cached_rows": 15237,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1643,
-          "source": "东方财富 / AKShare"
+          "rows": 1644,
+          "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1643,
+          "rows": 1644,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1706,
+          "rows": 1707,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15229
+      "cached_rows": 15237
     },
     "valuation": {
       "status": "success",
-      "rows": 23533,
-      "started_at": "2026-10-16T12:28:01+08:00",
-      "finished_at": "2026-10-16T12:28:32+08:00",
-      "latest_date": "20261015",
-      "total_cached_rows": 23533,
+      "rows": 23536,
+      "started_at": "2026-10-16T21:30:49+08:00",
+      "finished_at": "2026-10-16T21:31:16+08:00",
+      "latest_date": "20261016",
+      "total_cached_rows": 23537,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5533,
+          "rows": 5534,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,37 +122,36 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1644,
+          "rows": 1645,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5533,
+          "rows": 5534,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5532,
+          "rows": 5533,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5291,
+          "rows": 5290,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23533
+      "cached_rows": 23537
     },
     "crowding": {
-      "status": "partial",
+      "status": "failed",
       "rows": 0,
-      "started_at": "2026-10-16T12:28:32+08:00",
-      "finished_at": "2026-10-16T12:28:32+08:00",
+      "started_at": "2026-10-16T21:31:16+08:00",
+      "finished_at": "2026-10-16T21:32:10+08:00",
+      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
+      "cached_rows": 1,
       "latest_date": "20260722",
-      "total_cached_rows": 1,
-      "skipped": true,
-      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
-      "cached_rows": 1
+      "serving_cached_data": true
     }
   },
   "overall_status": "partial"
