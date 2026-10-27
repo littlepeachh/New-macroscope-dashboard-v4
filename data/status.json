@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-10-27T12:58:42+08:00",
+  "updated_at": "2026-10-27T22:53:25+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-10-27T12:58:42+08:00",
-      "finished_at": "2026-10-27T12:59:05+08:00",
+      "started_at": "2026-10-27T22:53:25+08:00",
+      "finished_at": "2026-10-27T22:54:44+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -32,84 +32,85 @@
             "source": "东方财富 / AKShare"
           },
           "cpi": {
-            "status": "success",
-            "rows": 171,
-            "source": "东方财富 / AKShare"
+            "status": "partial",
+            "rows": 359,
+            "source": "金十 / AKShare"
           }
         },
         "messages": [
-          "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
+          "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')",
+          "CPI: ChunkedEncodingError(ProtocolError('Response ended prematurely'))"
         ]
       },
       "cached_rows": 171
     },
     "market": {
       "status": "success",
-      "rows": 15291,
-      "started_at": "2026-10-27T12:59:05+08:00",
-      "finished_at": "2026-10-27T12:59:20+08:00",
-      "latest_date": "20261026",
-      "total_cached_rows": 15291,
+      "rows": 15300,
+      "started_at": "2026-10-27T22:54:44+08:00",
+      "finished_at": "2026-10-27T22:54:58+08:00",
+      "latest_date": "20261027",
+      "total_cached_rows": 15300,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1650,
+          "rows": 1651,
           "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1650,
+          "rows": 1651,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1713,
+          "rows": 1714,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15291
+      "cached_rows": 15300
     },
     "valuation": {
       "status": "success",
-      "rows": 23568,
-      "started_at": "2026-10-27T12:59:20+08:00",
-      "finished_at": "2026-10-27T12:59:47+08:00",
-      "latest_date": "20261026",
-      "total_cached_rows": 23568,
+      "rows": 23573,
+      "started_at": "2026-10-27T22:54:58+08:00",
+      "finished_at": "2026-10-27T22:55:26+08:00",
+      "latest_date": "20261027",
+      "total_cached_rows": 23573,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5540,
+          "rows": 5541,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,37 +123,36 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1651,
+          "rows": 1652,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5540,
+          "rows": 5541,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5539,
+          "rows": 5540,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5298,
+          "rows": 5299,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23568
+      "cached_rows": 23573
     },
     "crowding": {
-      "status": "partial",
+      "status": "failed",
       "rows": 0,
-      "started_at": "2026-10-27T12:59:47+08:00",
-      "finished_at": "2026-10-27T12:59:47+08:00",
+      "started_at": "2026-10-27T22:55:26+08:00",
+      "finished_at": "2026-10-27T22:56:24+08:00",
+      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))) | 沪深A股分市场实时行情: ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))\")",
+      "cached_rows": 1,
       "latest_date": "20260722",
-      "total_cached_rows": 1,
-      "skipped": true,
-      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
-      "cached_rows": 1
+      "serving_cached_data": true
     }
   },
   "overall_status": "partial"
