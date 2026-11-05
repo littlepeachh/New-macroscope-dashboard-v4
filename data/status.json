@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-05T14:39:27+08:00",
+  "updated_at": "2026-11-06T00:46:31+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-05T14:39:27+08:00",
-      "finished_at": "2026-11-05T14:39:51+08:00",
+      "started_at": "2026-11-06T00:46:31+08:00",
+      "finished_at": "2026-11-06T00:46:53+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -45,11 +45,11 @@
     },
     "market": {
       "status": "success",
-      "rows": 15354,
-      "started_at": "2026-11-05T14:39:51+08:00",
-      "finished_at": "2026-11-05T14:41:37+08:00",
+      "rows": 15362,
+      "started_at": "2026-11-06T00:46:53+08:00",
+      "finished_at": "2026-11-06T00:48:21+08:00",
       "latest_date": "20261105",
-      "total_cached_rows": 15355,
+      "total_cached_rows": 15363,
       "symbols": {
         "000688.SH": {
           "status": "success",
@@ -58,58 +58,58 @@
         },
         "931087.CSI": {
           "status": "success",
-          "rows": 1657,
+          "rows": 1658,
           "source": "中证指数官网 / AKShare"
         },
         "AAPL": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1720,
+          "rows": 1721,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15355
+      "cached_rows": 15363
     },
     "valuation": {
       "status": "success",
-      "rows": 23603,
-      "started_at": "2026-11-05T14:41:37+08:00",
-      "finished_at": "2026-11-05T14:42:07+08:00",
-      "latest_date": "20261104",
-      "total_cached_rows": 23603,
+      "rows": 23604,
+      "started_at": "2026-11-06T00:48:21+08:00",
+      "finished_at": "2026-11-06T00:48:43+08:00",
+      "latest_date": "20261105",
+      "total_cached_rows": 23606,
       "indices": {
         "000001.SH": {
           "status": "success",
-          "rows": 5547,
+          "rows": 5548,
           "source": "中证指数官网 / AKShare"
         },
         "399001.SZ": {
@@ -122,32 +122,32 @@
         },
         "000688.SH": {
           "status": "success",
-          "rows": 1658,
+          "rows": 1657,
           "source": "中证指数官网 / AKShare"
         },
         "000016.SH": {
           "status": "success",
-          "rows": 5547,
+          "rows": 5546,
           "source": "中证指数官网 / AKShare"
         },
         "000300.SH": {
           "status": "success",
-          "rows": 5546,
+          "rows": 5547,
           "source": "中证指数官网 / AKShare"
         },
         "000905.SH": {
           "status": "success",
-          "rows": 5305,
+          "rows": 5306,
           "source": "中证指数官网 / AKShare"
         }
       },
-      "cached_rows": 23603
+      "cached_rows": 23606
     },
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-11-05T14:42:07+08:00",
-      "finished_at": "2026-11-05T14:42:07+08:00",
+      "started_at": "2026-11-06T00:48:43+08:00",
+      "finished_at": "2026-11-06T00:48:43+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
