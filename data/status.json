@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-05T00:32:18+08:00",
+  "updated_at": "2026-11-05T14:39:27+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-05T00:32:18+08:00",
-      "finished_at": "2026-11-05T00:32:52+08:00",
+      "started_at": "2026-11-05T14:39:27+08:00",
+      "finished_at": "2026-11-05T14:39:51+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -45,15 +45,15 @@
     },
     "market": {
       "status": "success",
-      "rows": 15353,
-      "started_at": "2026-11-05T00:32:52+08:00",
-      "finished_at": "2026-11-05T00:34:01+08:00",
-      "latest_date": "20261104",
-      "total_cached_rows": 15354,
+      "rows": 15354,
+      "started_at": "2026-11-05T14:39:51+08:00",
+      "finished_at": "2026-11-05T14:41:37+08:00",
+      "latest_date": "20261105",
+      "total_cached_rows": 15355,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1656,
+          "rows": 1657,
           "source": "东方财富 / AKShare"
         },
         "931087.CSI": {
@@ -97,13 +97,13 @@
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15354
+      "cached_rows": 15355
     },
     "valuation": {
       "status": "success",
       "rows": 23603,
-      "started_at": "2026-11-05T00:34:01+08:00",
-      "finished_at": "2026-11-05T00:34:36+08:00",
+      "started_at": "2026-11-05T14:41:37+08:00",
+      "finished_at": "2026-11-05T14:42:07+08:00",
       "latest_date": "20261104",
       "total_cached_rows": 23603,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-11-05T00:34:36+08:00",
-      "finished_at": "2026-11-05T00:34:36+08:00",
+      "started_at": "2026-11-05T14:42:07+08:00",
+      "finished_at": "2026-11-05T14:42:07+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
