@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-08T13:56:05+08:00",
+  "updated_at": "2026-11-09T14:17:34+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-08T13:56:05+08:00",
-      "finished_at": "2026-11-08T13:56:28+08:00",
+      "started_at": "2026-11-09T14:17:34+08:00",
+      "finished_at": "2026-11-09T14:17:57+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -45,16 +45,16 @@
     },
     "market": {
       "status": "success",
-      "rows": 15371,
-      "started_at": "2026-11-08T13:56:28+08:00",
-      "finished_at": "2026-11-08T13:57:27+08:00",
+      "rows": 15372,
+      "started_at": "2026-11-09T14:17:57+08:00",
+      "finished_at": "2026-11-09T14:18:06+08:00",
       "latest_date": "20261106",
       "total_cached_rows": 15372,
       "symbols": {
         "000688.SH": {
           "status": "success",
-          "rows": 1658,
-          "source": "东方财富 / AKShare"
+          "rows": 1659,
+          "source": "中证指数官网 / AKShare"
         },
         "931087.CSI": {
           "status": "success",
@@ -102,8 +102,8 @@
     "valuation": {
       "status": "success",
       "rows": 23613,
-      "started_at": "2026-11-08T13:57:27+08:00",
-      "finished_at": "2026-11-08T13:57:53+08:00",
+      "started_at": "2026-11-09T14:18:06+08:00",
+      "finished_at": "2026-11-09T14:18:30+08:00",
       "latest_date": "20261106",
       "total_cached_rows": 23613,
       "indices": {
@@ -146,8 +146,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-11-08T13:57:53+08:00",
-      "finished_at": "2026-11-08T13:57:53+08:00",
+      "started_at": "2026-11-09T14:18:30+08:00",
+      "finished_at": "2026-11-09T14:18:30+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
