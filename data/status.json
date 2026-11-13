@@ -1,25 +1,23 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-13T14:36:22+08:00",
+  "updated_at": "2026-11-14T00:43:12+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-13T14:36:22+08:00",
-      "finished_at": "2026-11-13T14:36:46+08:00",
+      "started_at": "2026-11-14T00:43:12+08:00",
+      "finished_at": "2026-11-14T00:43:29+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
         "components": {
           "money_supply": {
-            "status": "success",
-            "rows": 171,
-            "source": "东方财富 / AKShare"
+            "status": "failed",
+            "error": "所有货币供应量源均失败"
           },
           "social_financing": {
-            "status": "success",
-            "rows": 103,
-            "source": "商务数据中心 / AKShare"
+            "status": "failed",
+            "error": "公开社融源失败"
           },
           "social_financing_stock": {
             "status": "success",
@@ -38,6 +36,9 @@
           }
         },
         "messages": [
+          "货币供应量: AttributeError(\"module 'akshare' has no attribute 'macro_china_money_supply'\")",
+          "M2同比备用源: AttributeError(\"module 'akshare' has no attribute 'macro_china_m2_yearly'\")",
+          "社会融资规模: AttributeError(\"module 'akshare' has no attribute 'macro_china_shrzgm'\")",
           "人民银行社融存量部分年份失败: 2022: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2022ntjsj/shrzgm/index.html') | 2023: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2023ntjsj/shrzgm/index.html') | 2024: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2024ntjsj/shrzgm/index.html') | 2025: HTTPError('404 Client Error: Not Found for url: https://www.pbc.gov.cn/diaochatongjisi/116219/116319/2025ntjsj/shrzgm/index.html')"
         ]
       },
@@ -45,11 +46,11 @@
     },
     "market": {
       "status": "success",
-      "rows": 15406,
-      "started_at": "2026-11-13T14:36:46+08:00",
-      "finished_at": "2026-11-13T14:36:54+08:00",
-      "latest_date": "20261112",
-      "total_cached_rows": 15406,
+      "rows": 15413,
+      "started_at": "2026-11-14T00:43:29+08:00",
+      "finished_at": "2026-11-14T00:43:34+08:00",
+      "latest_date": "20261113",
+      "total_cached_rows": 15413,
       "symbols": {
         "000688.SH": {
           "status": "success",
@@ -63,47 +64,47 @@
         },
         "AAPL": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1726,
+          "rows": 1727,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15406
+      "cached_rows": 15413
     },
     "valuation": {
       "status": "success",
       "rows": 23628,
-      "started_at": "2026-11-13T14:36:54+08:00",
-      "finished_at": "2026-11-13T14:37:27+08:00",
+      "started_at": "2026-11-14T00:43:34+08:00",
+      "finished_at": "2026-11-14T00:43:57+08:00",
       "latest_date": "20261111",
       "total_cached_rows": 23628,
       "indices": {
@@ -146,8 +147,8 @@
     "crowding": {
       "status": "partial",
       "rows": 0,
-      "started_at": "2026-11-13T14:37:27+08:00",
-      "finished_at": "2026-11-13T14:37:27+08:00",
+      "started_at": "2026-11-14T00:43:57+08:00",
+      "finished_at": "2026-11-14T00:43:57+08:00",
       "latest_date": "20260722",
       "total_cached_rows": 1,
       "skipped": true,
