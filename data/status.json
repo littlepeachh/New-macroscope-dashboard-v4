@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-17T15:50:12+08:00",
+  "updated_at": "2026-11-18T01:51:14+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-17T15:50:12+08:00",
-      "finished_at": "2026-11-17T15:50:43+08:00",
+      "started_at": "2026-11-18T01:51:14+08:00",
+      "finished_at": "2026-11-18T01:51:31+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -46,11 +46,11 @@
     },
     "market": {
       "status": "success",
-      "rows": 12096,
-      "started_at": "2026-11-17T15:50:43+08:00",
-      "finished_at": "2026-11-17T15:50:51+08:00",
-      "latest_date": "20261116",
-      "total_cached_rows": 15420,
+      "rows": 12103,
+      "started_at": "2026-11-18T01:51:31+08:00",
+      "finished_at": "2026-11-18T01:51:39+08:00",
+      "latest_date": "20261117",
+      "total_cached_rows": 15427,
       "symbols": {
         "000688.SH": {
           "status": "failed",
@@ -62,49 +62,49 @@
         },
         "AAPL": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1728,
+          "rows": 1729,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15420
+      "cached_rows": 15427
     },
     "valuation": {
       "status": "success",
       "rows": 762,
-      "started_at": "2026-11-17T15:50:51+08:00",
-      "finished_at": "2026-11-17T15:51:13+08:00",
-      "latest_date": "20261116",
-      "total_cached_rows": 23634,
+      "started_at": "2026-11-18T01:51:39+08:00",
+      "finished_at": "2026-11-18T01:52:04+08:00",
+      "latest_date": "20261117",
+      "total_cached_rows": 23637,
       "indices": {
         "000001.SH": {
           "status": "failed",
@@ -138,18 +138,19 @@
           "source": "乐咕乐股 / AKShare"
         }
       },
-      "cached_rows": 23634
+      "cached_rows": 23637
     },
     "crowding": {
-      "status": "success",
-      "rows": 1,
-      "started_at": "2026-11-17T15:51:13+08:00",
-      "finished_at": "2026-11-17T15:54:23+08:00",
+      "status": "partial",
+      "rows": 0,
+      "started_at": "2026-11-18T01:52:04+08:00",
+      "finished_at": "2026-11-18T01:52:04+08:00",
       "latest_date": "20261117",
       "total_cached_rows": 2,
-      "source": "沪深京A股实时行情 / AKShare",
+      "skipped": true,
+      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
       "cached_rows": 2
     }
   },
-  "overall_status": "success"
+  "overall_status": "partial"
 }
