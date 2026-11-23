@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-23T15:29:14+08:00",
+  "updated_at": "2026-11-24T04:31:03+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-23T15:29:14+08:00",
-      "finished_at": "2026-11-23T15:29:30+08:00",
+      "started_at": "2026-11-24T04:31:03+08:00",
+      "finished_at": "2026-11-24T04:31:15+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -46,11 +46,11 @@
     },
     "market": {
       "status": "success",
-      "rows": 12124,
-      "started_at": "2026-11-23T15:29:30+08:00",
-      "finished_at": "2026-11-23T15:29:38+08:00",
-      "latest_date": "20261120",
-      "total_cached_rows": 15448,
+      "rows": 12131,
+      "started_at": "2026-11-24T04:31:15+08:00",
+      "finished_at": "2026-11-24T04:31:23+08:00",
+      "latest_date": "20261123",
+      "total_cached_rows": 15455,
       "symbols": {
         "000688.SH": {
           "status": "failed",
@@ -62,49 +62,49 @@
         },
         "AAPL": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "MSFT": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "NVDA": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "AMZN": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "GOOGL": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "META": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         },
         "TSLA": {
           "status": "success",
-          "rows": 1732,
+          "rows": 1733,
           "source": "Yahoo Finance / yfinance"
         }
       },
-      "cached_rows": 15448
+      "cached_rows": 15455
     },
     "valuation": {
       "status": "success",
       "rows": 762,
-      "started_at": "2026-11-23T15:29:38+08:00",
-      "finished_at": "2026-11-23T15:30:01+08:00",
-      "latest_date": "20261120",
-      "total_cached_rows": 23646,
+      "started_at": "2026-11-24T04:31:23+08:00",
+      "finished_at": "2026-11-24T04:32:01+08:00",
+      "latest_date": "20261123",
+      "total_cached_rows": 23649,
       "indices": {
         "000001.SH": {
           "status": "failed",
@@ -138,17 +138,18 @@
           "source": "乐咕乐股 / AKShare"
         }
       },
-      "cached_rows": 23646
+      "cached_rows": 23649
     },
     "crowding": {
-      "status": "failed",
+      "status": "partial",
       "rows": 0,
-      "started_at": "2026-11-23T15:30:01+08:00",
-      "finished_at": "2026-11-23T15:30:08+08:00",
-      "error": "DataFetchError(\"交易拥挤度失败: 沪深京A股实时行情: Push2RateLimitError('东方财富 push2 行情服务器断开了连接，通常是短时间内请求过多，当前 IP 被临时限流。首次限流一般约 5 分钟后恢复，反复触发后可能需要 40 分钟以上；等待期间不要重复调用东方财富的行情接口，否则会延长限流。') | 沪深A股分市场实时行情: Push2RateLimitError('东方财富 push2 行情服务器断开了连接，通常是短时间内请求过多，当前 IP 被临时限流。首次限流一般约 5 分钟后恢复，反复触发后可能需要 40 分钟以上；等待期间不要重复调用东方财富的行情接口，否则会延长限流。')\")",
-      "cached_rows": 3,
+      "started_at": "2026-11-24T04:32:01+08:00",
+      "finished_at": "2026-11-24T04:32:01+08:00",
       "latest_date": "20261118",
-      "serving_cached_data": true
+      "total_cached_rows": 3,
+      "skipped": true,
+      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
+      "cached_rows": 3
     }
   },
   "overall_status": "partial"
