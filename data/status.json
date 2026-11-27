@@ -1,12 +1,12 @@
 {
   "app_version": "4.0.0",
-  "updated_at": "2026-11-27T02:36:56+08:00",
+  "updated_at": "2026-11-27T16:20:20+08:00",
   "datasets": {
     "macro": {
       "status": "success",
       "rows": 171,
-      "started_at": "2026-11-27T02:36:56+08:00",
-      "finished_at": "2026-11-27T02:37:08+08:00",
+      "started_at": "2026-11-27T16:20:20+08:00",
+      "finished_at": "2026-11-27T16:20:38+08:00",
       "latest_date": "202609",
       "total_cached_rows": 171,
       "source_details": {
@@ -47,8 +47,8 @@
     "market": {
       "status": "success",
       "rows": 12145,
-      "started_at": "2026-11-27T02:37:08+08:00",
-      "finished_at": "2026-11-27T02:37:16+08:00",
+      "started_at": "2026-11-27T16:20:38+08:00",
+      "finished_at": "2026-11-27T16:20:45+08:00",
       "latest_date": "20261125",
       "total_cached_rows": 15469,
       "symbols": {
@@ -101,8 +101,8 @@
     "valuation": {
       "status": "success",
       "rows": 762,
-      "started_at": "2026-11-27T02:37:16+08:00",
-      "finished_at": "2026-11-27T02:37:36+08:00",
+      "started_at": "2026-11-27T16:20:45+08:00",
+      "finished_at": "2026-11-27T16:21:14+08:00",
       "latest_date": "20261126",
       "total_cached_rows": 23658,
       "indices": {
@@ -141,16 +141,15 @@
       "cached_rows": 23658
     },
     "crowding": {
-      "status": "partial",
-      "rows": 0,
-      "started_at": "2026-11-27T02:37:36+08:00",
-      "finished_at": "2026-11-27T02:37:36+08:00",
-      "latest_date": "20261118",
-      "total_cached_rows": 3,
-      "skipped": true,
-      "note": "交易拥挤度仅在北京时间交易日15:20后追加，避免把盘中成交额当作收盘数据。",
-      "cached_rows": 3
+      "status": "success",
+      "rows": 1,
+      "started_at": "2026-11-27T16:21:14+08:00",
+      "finished_at": "2026-11-27T16:24:38+08:00",
+      "latest_date": "20261127",
+      "total_cached_rows": 4,
+      "source": "沪深京A股实时行情 / AKShare",
+      "cached_rows": 4
     }
   },
-  "overall_status": "partial"
+  "overall_status": "success"
 }
